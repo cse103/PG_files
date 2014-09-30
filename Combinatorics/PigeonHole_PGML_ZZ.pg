@@ -1,0 +1,74 @@
+## DESCRIPTION
+## Calculus
+## ENDDESCRIPTION
+
+## KEYWORDS('discrete', 'permutation')
+## Tagged by YL
+
+## DBsubject('Discrete Mathematics')
+## DBchapter('Combinatorics')
+## DBsection('Counting')
+## Date('')
+## Author('')
+## Institution('ASU')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+    "PGstandard.pl",
+    "PGML.pl",
+    "MathObjects.pl",
+    "PGcourse.pl",  
+    "contextIntegerFunctions.pl"
+);
+
+TEXT(beginproblem());
+
+$a=random(2,3,1);
+$n=Compute("P(26,$a)");
+$b=random(3,6,1);
+$b2=Compute("$b+2");
+$c=Compute("($b+1)*P(26,$a)+1");
+$cr=$c->eval();
+$d=Compute("($b-1)*P(26,$a)+1");
+$showHint = 3;
+
+BEGIN_PGML
+Consider a list of randomly generated [$a]-letter "words" printed on a paper. The letters cannot be repeated.  
+(a) What is the size of the set of allowed words?  
+Answer = [__________]{$n} 
+
+After [$showHint] incorrect tries you will be able to see a hint.
+END_PGML
+BEGIN_PGML_HINT
+There are 26 letters in the english alphabet, therefor there are 26 possibilities for the first letter. Once this first letter has been chosen, there remain 25 possibilities for the second letter, 24 possibilities for the third letter etc. To compute the number of possibilities for an [$a]-letter word take the product of the number of possibilities for each of the [$a] letters.
+END_PGML_SOLUTION
+
+BEGIN_PGML
+(b) At least how many of these "words" should be printed to be sure of having 
+at least [$b] identical "words" on the list?  
+Answer = [_______________]{$d}
+
+After [$showHint] incorrect tries you will be able to see a hint.
+END_PGML
+BEGIN_PGML_HINT
+Recall the "Pigeon Hole" principle. If the number of different words is [`n`] then in order to ensure that at least one of the words appears at least [`k`] times you need to print [`(k-1)n+1`] words. Now, if you can set [`k`] and [`n`] to the correct values, you'll have the answer. 
+END_PGML_SOLUTION
+
+BEGIN_PGML
+(c) At least how many identical "words" are printed if there are [`[$c]`] "words" on the list?  
+Answer = [_______________]{$b2}
+
+After [$showHint] incorrect tries you will be able to see a hint.
+END_PGML
+BEGIN_PGML_HINT
+In this case you have to use the pigeon hole formula in the reverse direction. Find the value of [`k`] that will be satisfied if you have [`[$c]`] words.
+END_PGML_SOLUTION
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.;

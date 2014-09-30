@@ -1,0 +1,74 @@
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "MathObjects.pl",
+  "parserRadioButtons.pl",
+  "compoundProblem.pl",
+  "Parser.pl",
+  "PGunion.pl",
+  "PGcourse.pl",
+  "PGchoicemacros.pl",
+);
+
+Context("Numeric");
+TEXT(beginproblem);
+$showPartialCorrectAnswers = 1;
+
+$S=Set(3,5,7,9);
+
+######################################################################
+BEGIN_PGML
+
+Instead of listing the elements of a set, one can define a set by
+specifying the precise conditions for an element to be in the set. For
+example:
+
+[``\mathbb{Z}^+ = \left\lbrace x: x \mbox{ is a positive integer } \right\rbrace``]
+
+[``
+\mathbb{R}   = \left\lbrace x: x \mbox{ is a real number} \right\rbrace
+``]
+
+The set of even numbers:
+[``
+E = \left\lbrace x \in \mathbb{Z}^+ : \frac{x}{2} \in \mathbb{Z}^+ \right\rbrace
+``]
+
+The elements of sets don't have to be numbers, for example, the 
+set of all locations on Earth is not a number, but can be described by a pair of numbers:
+[``
+Loc = \left\lbrace x: x \mbox{ is a particular geographic location, as described by logitude and lattitude} \right\rbrace
+``]
+
+Finally there are sets consisting of elements that defy description using numbers, for example: the set of all people living in the world.
+
+When set [`S`] is _contained_ in set [`T`] (that is, [`x \in S \Rightarrow x
+\in T`]), we write [`S \subseteq T`]. For instance, [`\mathbb{Z}^+
+\subseteq \mathbb{R}`]. When [`S`] is _contained_ in [`T`] we say that [`S`] is a _subset_ of [`T`].
+
+The _empty set_ contains no elements and is denoted by [`\lbrace \rbrace`] or [`\emptyset`].
+---
+*Review Problems*
+
+For each of the following statements, write "1" if true and "0" if false.
+
+o  [_]{1} [`\{1,2\} \subseteq \{2,4,1\}`]
+o  [_]{1} [`\emptyset \subseteq \{ 5 \}`]
+o  [_]{0} [`\{2,4,1\} \subseteq \{1,2\}`]
+
+Let [`(a,b)`] denote the set of real numbers in the range [` a < x < b `].
+For each of the following statements, write "1" if true and "0" if false.
+
+o [_]{1} [` (1,2) \subseteq (1,3) `]
+o [_]{0} [` (2,4) \subseteq (1,3) `]
+o [_]{0} [` (1,3) \subseteq (2,4) `] 
+o [_]{1} [` \{3,4\} \subseteq (2,5) `]
+o [_]{0} [` \{1,2\} \subseteq (1,2) `]
+o [_]{0} [` (1,2) \subseteq \{1,2\} `]
+
+END_PGML
+######################################################################
+
+ENDDOCUMENT();

@@ -1,0 +1,48 @@
+## DESCRIPTION
+## Discrete mathematics, counting
+## ENDDESCRIPTION
+
+## KEYWORDS('combinatorics', 'counting', 'permutation')
+## Tagged by jjh2b, 08/24/06
+
+## DBsubject('Discrete Mathematics')
+## DBchapter('Combinatorics')
+## DBsection('Counting')
+## Date('')
+## Author('')
+## Institution('ASU')
+## TitleText1('Discrete Mathematics')
+## EditionText1('4')
+## AuthorText1('Rosen')
+## Section1('4.1')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+"PG.pl",
+"PGbasicmacros.pl",
+"PGchoicemacros.pl",
+"PGanswermacros.pl",
+"PGauxiliaryFunctions.pl",
+"PGML.pl",
+"contextIntegerFunctions.pl"
+);
+
+TEXT(beginproblem());
+
+$p = random(6,8,1);
+if ($p == 6) {$a =Compute("(C(10,$p)+C(10,$p+1)+C(10,$p+2)+C(10,$p+3)+1)/(2^10)");}
+if ($p == 7) {$a = Compute("(C(10,$p)+C(10,$p+1)+C(10,$p+2)+1)/(2^10)");}
+if ($p == 8) {$a = Compute("(C(10,$p)+C(10,$p+1)+1)/(2^10)");}
+# these variables should be used in the problem below
+
+BEGIN_PGML
+Here we will calculate the probability of a student getting at least [$p*10] percent on a true/false exam with 10 questions.  
+
+The probability that a student gets a grade of [$p*10] percent or better by guessing is [__________________________________________________________________]{$a}
+END_PGML
+
+
+ENDDOCUMENT();        # This should be the last executable line in the
+problem.;

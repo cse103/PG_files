@@ -1,0 +1,69 @@
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGunion.pl",
+  "parserOrientation.pl",
+  "PGcourse.pl",
+);
+
+
+TEXT(beginproblem);
+
+Title("When You're Stuck...");
+
+##############################################
+
+BEGIN_TEXT
+The goal of the $WW software is to help you learn mathematics by giving
+you immediate feedback on the correctness of your answer to a problem. 
+
+Here are some things you can try when you are stuck on a problem.
+$PAR
+
+\{BeginParList("UL")\}
+$ITEM
+Reread the problem carefully to see if there are any instructions
+that you did not notice.
+$ITEMSEP
+
+$ITEM
+Look in the textbook or class notes for relevant methods. (See the moodle page).
+$ITEMSEP
+
+$ITEM
+Have a look on Piazza. You can click on the ${LQ}Go To Piazza$RQ button at the bottom of the problem page. When you get to Piazza, start by searching the posts to see if somebody has already posted a similar question to yours. If not, post a question. Check for answers after 15-30 minutes.
+$ITEMSEP
+
+$ITEM
+Talk to your TA or instructor during office hours. 
+$ITEMSEP
+
+$ITEM
+Ask a fellow student for help.
+$ITEMSEP
+
+$ITEM
+This quarter we are introducing ${LQ}WebWork Hints$RQ  which is a system designed to identify students that are struggling and to send those students hints. If you are having trouble with a particular problem you are likely to have a hint appear on your screen. The hint is usually in the form of a question. This question is designed to help you with the problem you are working on at that point. Answering the question is likely to help you, however, you are not required to answer the question and no points will be deducted if you ignore the hint. It is there for your own benefit.
+$ITEMSEP
+
+\{EndParList("UL")\}
+
+To get credit for this problem, you must click the ${LQ}Submit
+Answers$RQ button. Then you can use the ${LQ}Prob. List$RQ button at
+the top of the page to return to the problem list page.  You will see
+that the problems you have done have been labeled as correct or
+incorrect, and you can go back and do problems you skipped or couldn't
+get right the first time.  Once you have done a problem correctly, it
+is ${BITALIC}always$EITALIC listed as correct even if you go back and
+do it incorrectly later.  This means you can use WeBWorK to review
+course material without any danger of changing your grade.  $PAR
+
+END_TEXT
+
+install_forgiving_grader();
+$showPartialCorrectAnswers = 1;
+
+##############################################
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

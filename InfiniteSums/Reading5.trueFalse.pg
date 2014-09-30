@@ -1,0 +1,58 @@
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGunion.pl",
+  "choiceUtils.pl",
+  "PGcourse.pl",
+);
+
+TEXT(beginproblem);
+
+Title("True/False Questions for Readings 5");
+
+##############################################
+
+$sl = new_select_list();
+$sl->{rf_print_q} = ~~&alt_print_q;
+$sl->{separation} = 5;
+
+
+$sl->qa(
+"A random variable \(X\) defines an event","F",
+"If \(X\) is a random variable and \(a\) is a constant, \(X \geq a\) defines an event","T",
+"The expected number of points when flipping a fair die is \(3.5\)","T",
+"\( \sum_{i=1}^{100} 1/i =\infty\)","F",
+"\( \sum_{i=1}^{\infty} 1/i =\infty\)","T",
+"\( \sum_{i=1}^{\infty} 1/i^2 =\infty\)","F",
+"The bias of a coin is a random variable","F",
+"The set of pairs of integers is countable","T"
+);
+
+$sl->choose(5);
+
+##################################################
+
+BEGIN_TEXT
+Read the new notes posted on Moodle, titled "Random variables, Expected values, Infinite Spaces"
+$PAR
+Enter a \{"T"\} or an \{"F"\} in each
+answer space below to indicate whether the corresponding
+statement is true or false.
+$PAR
+
+$BBLOCKQUOTE
+\{$sl->print_q\}
+$EBLOCKQUOTE
+$PAR 
+
+END_TEXT
+
+ANS(str_cmp($sl->ra_correct_ans));
+install_problem_grader(~~&std_problem_grader);
+$showPartialCorrectAnswers = 1;
+
+##################################################
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

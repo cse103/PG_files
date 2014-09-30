@@ -1,0 +1,41 @@
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+"PG.pl",
+"PGML.pl",
+"PGbasicmacros.pl",
+"PGchoicemacros.pl",
+"PGanswermacros.pl",
+"PGnumericalmacros.pl",
+"PGstatisticsmacros.pl",
+"PGauxiliaryFunctions.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+Context("Numeric");
+
+
+$ans1 = 0;
+while ($ans1 < 0.002) {
+$mu = random(5,7,.5);
+$lambda = 1/$mu;
+$a = random(9,12,1);
+$x = $lambda*$a;
+$ans1 = Compute("e^(-$x)");
+}
+
+BEGIN_PGML
+The manager of a supermarket tracked the amount of time needed 
+for customers to be served by the cashier.  After checking with 
+his statistics professor, he concluded that the checkout times 
+are exponentially distributed with a mean of [$mu] minutes.  What 
+propotion of customers require more than [$a] minutes to check out?
+
+Proportion = [____________]{$ans1}
+
+END_PGML
+
+
+ENDDOCUMENT();       # This should be the last executable line in the problem.

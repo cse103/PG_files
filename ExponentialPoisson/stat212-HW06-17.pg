@@ -1,0 +1,48 @@
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+"PG.pl",
+"PGML.pl",
+"PGbasicmacros.pl",
+"PGchoicemacros.pl",
+"PGanswermacros.pl",
+"PGnumericalmacros.pl",
+"PGstatisticsmacros.pl",
+"PGauxiliaryFunctions.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+Context("Numeric");
+
+$ans1 = 0;
+$ans2 = 0;
+$ans3 = 0;
+$ans4 = 0;
+while (($ans1 < 0.002) || ($ans2 < 0.002) || ($ans3 < 0.002) || ($ans4 < 0.002)) {
+$lambda = random(.25,.75,0.02);
+$a1 = $lambda - random(.05,.2,0.01);
+$a2 = $lambda - random(.05,.2,0.01);
+$b2 = 5*$lambda + random(.05,.2,0.01);
+$ans1 = Compute("e^(-$lambda)");
+$ans2 = Compute("e^(-$a1*$lambda)");
+$ans3 = Compute("1 - e^(-$lambda*$lambda)");
+$ans4 = Compute("e^(-$a2*$lambda) - e^(-$b2*$lambda)");
+}
+
+BEGIN_PGML
+Suppose that [`X`] is an exponentially distributed random variable
+with [`\lambda = [$lambda]`].  Find each of the following probabilities:
+
+A. [`P(X > 1)`] = [_______________]{$ans1}
+
+B. [`P(X > [$a1])`] = [_______________]{$ans2}
+
+C. [`P(X < [$lambda])`] = [_______________]{$ans3}
+
+D. [`P([$a2] < X < [$b2])`] = [_______________]{$ans4}
+
+END_PGML
+
+ENDDOCUMENT();       # This should be the last executable line in the problem.

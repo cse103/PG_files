@@ -1,0 +1,62 @@
+##DESCRIPTION
+##   Statistics: Hypothesis Testing
+##ENDDESCRIPTION
+
+##KEYWORDS('Statistics', 'Hypothesis Testing')
+##Tagged by up2p
+
+##DBsubject('Statistics')
+##DBchapter('Hypothesis Testing')
+##DBsection('Elements of a Statistical Test')
+##Date('')
+##Author('')
+##Institution('ASU')
+##TitleText1('')
+##EditionText1('')
+##AuthorText1('')
+##Section1('')
+##Problem1('')
+
+#
+# First comes some stuff that appears at the beginning of every problem
+#
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+"PG.pl",
+"PGML.pl",
+"PGbasicmacros.pl",
+"PGchoicemacros.pl",
+"PGanswermacros.pl",
+"PGauxiliaryFunctions.pl",
+"PGasu.pl",
+"contextArbitraryString.pl",
+);
+
+TEXT(beginproblem());
+
+$showPartialCorrectAnswers = 0;
+Context("ArbitraryString");
+
+BEGIN_PGML
+## [`\chi^2`] (Chi-square) Test ##
+---
+
+Note that _frequency_ in this context means the count, not the ratio.
+
+Suppose the population contains members that belong to several categories, say gender (2 categories, male/female). We sample a number of persons, say 100, from this population, and observe the frequencies of each category. Suppose the outcome is 44 men and 56 women. We call these the *observed frequencies*. On the other hand, we have some natural expectation regarding these frequencies: we expect to have 50 men and 50 women from a sampling of 100 persons. In this case, the belief that men and women have the same proportion in the population is the *"null hypothesis"*. Based on this null hypothesis, we have *expected frequencies* of 50 for men and 50 for women.
+
+A [`\chi^2`] or *chi-square test* checks whether our natural belief (i.e. the "null hypothesis") should be rejected, given the sample we have. In other words, it checks how good the observed frequencies of each category  _fits_ the expected frequencies.
+
+
+(a) Are the *observed* frequencies random variables?  Answer yes or no.
+answer:  [________________________]{"yes"}
+
+(b) Are the *expected* frequencies random variables?  Answer yes or no. 
+answer: [________________________]{"no"}
+
+END_PGML
+
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

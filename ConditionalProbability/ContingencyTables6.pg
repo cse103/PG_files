@@ -1,0 +1,82 @@
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "MathObjects.pl",
+  "PGcourse.pl",
+  "unionTables.pl"
+);
+
+Context("Numeric");
+Context()->variables->are(
+      k => ['Real', limits=>[1,10], resolution=>1],
+      n => ['Real', limits=>[1,10], resolution=>1],
+      x => ['Real']
+    );
+
+TEXT(beginproblem);
+$showPartialCorrectAnswers = 1;
+
+$C11 = "1/16";
+$C12 = "2/16";
+$C13 = "1/16";
+$C21 = "2/16";
+$C22 = "4/16";
+$C23 = "2/16";
+$C31 = "1/16";
+$C32 = "2/16";
+$C33 = "1/16";
+$C14 = "1/4 ";
+$C24 = "";
+$C34 = "1/4";
+$C41 = "";
+$C42 = "";
+$C43 = "1/4";
+$C44 = " ";
+
+$X1 = "($C11 + $C21 + $C31)";
+$X2 = "($C12 + $C22 + $C32)";
+$X3 = "($C13 + $C23 + $C33)";
+
+$Y1 = "($C11 + $C12 + $C13)";
+$Y2 = "($C21 + $C22 + $C23)";
+$Y3 = "($C31 + $C32 + $C33)";
+
+$E_X = "1*$X1 + 2*$X2 + 3*$X3";
+$E_Y = "1*$Y1 + 2*$Y2 + 3*$Y3";
+$E_XY = "1*$C11 + 2*$C12 + 3*$C13 + 2*$C21 + 4*$C22 + 6*$C23 + 3*$C31 + 6*$C32 + 9*$C33";
+$COV_XY  = "$E_XY - ( ($E_X) * ($E_Y) )";
+$E_X2 = "1*$X1 + 4*$X2 + 9*$X3";
+$E_Y2 = "1*$X1 + 4*$X2 + 9*$X3";
+$STD_X = "sqrt($E_X2 - ($E_X)**2)";
+$STD_Y = "sqrt($E_Y2 - ($E_Y)**2)";
+######################################################################
+
+$bHTML="";
+$eHTML="";
+
+BEGIN_TEXT
+
+$BCENTER
+\{ begintable(5) \}
+\{ row( "", " $SPACE X=1 $SPACE ", " $SPACE X=2 $SPACE ", "  $SPACE X=3 $SPACE ", "Marginal over Y") \}
+\{ row( "Y=1", " $SPACE $C11 $SPACE", "", "$SPACE $C13 $SPACE", "$SPACE $C14 $SPACE" ) \}
+\{ row( "Y=2", "$SPACE $C21 $SPACE", "$SPACE $C22 $SPACE", "", "$SPACE $C24 $SPACE" ) \}
+\{ row( "Y=3", "", "$SPACE $C32 $SPACE", "$SPACE $C33 $SPACE", "$SPACE $C34 $SPACE" ) \}
+\{ row( "Marginal over X", "$SPACE $C41 $SPACE", "$SPACE $C42 $SPACE", "$SPACE $C43 $SPACE", "$SPACE $C44 $SPACE" ) \}
+\{ endtable() \}
+$ECENTER
+END_TEXT
+
+BEGIN_PGML
+- Fill in the missing probabilities here:
+ [`P(X=2,Y=1)=`][____]{"$C12"}, [`P(X=3,Y=2)=`][____]{"$C23"},[`P(X=1,Y=3)=`][____]{"$C31"}
+- The marginal distribution of [`X`] is [`P(X=1)=`][____]{"$X1"}, [`P(X=2)=`][____]{"$X2"}, [`P(X=3)=`][____]{"$X3"}
+- The marginal distribution of [`Y`] is [`P(Y=1)=`][____]{"$Y1"}, [`P(Y=2)=`][____]{"$Y2"}, [`P(Y=3)=`][____]{"$Y3"}
+- Are [`X`] and [`Y`] independent? [____]{"1"} (0=no, 1=yes)
+- Fill in the following conditional probabilities: [`P(X=2|Y=1)=`][____]{"$C12/$Y1"}, [`P(Y=2|X=3)=`][____]{"$C23/$X3"},[`P(Y=3|X=1)=`][____]{"$C31/$X1"}
+
+END_PGML
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

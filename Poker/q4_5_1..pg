@@ -1,0 +1,39 @@
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "MathObjects.pl",
+  "PGcourse.pl",
+  "contextIntegerFunctions.pl"
+);
+
+SRAND($psvn);
+$ns = random(4,6,1);
+$nr = random(10,16,1);
+$n = $ns*$nr;
+
+TEXT(beginproblem);
+$showPartialCorrectAnswers = 1;
+
+######################################################################
+
+BEGIN_PGML
+
+### Flush: 5 cards from the same suit, but not in order ###
+*Remember, the deck you are using has [$ns] suits and [$nr] ranks.*
+
+1. The number of possibilities for the suit is [______]{$ns}.
+
+2. The ranks can be anything except those that are in order. The number of all possible ranks for a hand of the same suit is [______]{Compute("C($nr,5)")}. Among these, the number of hands whose ranks are in order is [______]{Compute("$nr-3")}. So the number of possible ranks of a flush is [______]{Compute("C($nr,5)-($nr-3)")}.
+
+4. Thus the number of hands that is a flush is [______]{Compute("$ns*(C($nr,5)-($nr-3))")}.
+
+5. The ratio of this number to the number of all hands [______]{Compute("$ns*(C($nr,5)-($nr-3))/C($n,5)")}.
+
+
+END_PGML
+
+######################################################################
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

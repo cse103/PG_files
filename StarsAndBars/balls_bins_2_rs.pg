@@ -1,0 +1,45 @@
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "MathObjects.pl",
+  "PGcourse.pl",
+  "contextIntegerFunctions.pl"
+);
+
+
+TEXT(beginproblem);
+
+
+$k = random(1,2,1);
+$r = random(1,2,1);
+$a = random(1,2,1);
+$select = random(8,15,1);
+
+
+$x = random(12,15,1);
+$y = random(5,6,1);
+
+$a1 = Compute("C($x-2*$y+$y-1,$x-2*$y)");
+$a2 = Compute("C($x-3+($y-2), $y-2)");
+
+
+
+######################################################################
+
+BEGIN_PGML
+
+#### Distributing Jellybeans ####
+
+We are trying to give [$x] jellybeans to [$y] students, 3 boys and [$y-3] girls. How many ways can this be done if:
+
+o Everyone gets at least 2 jellybeans?[___________]{$a1}
+
+o A particular girl, Emily, gets exactly 3 jellybeans?  [___________]{$a2}
+
+END_PGML
+
+######################################################################
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

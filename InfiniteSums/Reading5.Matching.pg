@@ -1,0 +1,51 @@
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGchoicemacros.pl",
+  "PGunion.pl",
+  "choiceUtils.pl",
+  "PGcourse.pl",
+);
+
+TEXT(beginproblem);
+
+Title("Some simple facts from Readings 5");
+
+##############################################
+
+$ml = new_match_list();
+$ml->rf_print_q(~~&alt_print_q);
+$ml->rf_print_a(~~&alt_print_a);
+$ml->{separation} = 6;
+
+$ml->qa(
+ "if \(r=1/2\), \(\sum_{i=1}^{\infty} r^i = \)", "1",
+ "countable set","A set that can be mapped to the natural numbers",
+ "\(\sum_{i=1}^{\infty} \frac{1}{i}=\)", "\(\infty\)",
+"if \(r=1\), \(\sum_{i=1}^{\infty} r^i = \)", "\(\infty\)",
+ "if \(r=2/3\), \(\sum_{i=1}^{\infty} i r^i = \)", "6",
+ "Flipping a coin with P(head)=0.1, the expected number of flips until the first head is ", "10"
+);
+
+$ml->choose(5);
+
+##################################################
+
+BEGIN_TEXT
+Read the new notes posted on Moodle, titled "Random variables, Expected values, Infinite Spaces"
+$PAR
+Then match each expression on the left with a value or term on the right.
+$PAR
+$PAR
+
+\{ColumnMatchTable($ml,indent => 30)\}
+$PAR
+
+END_TEXT
+
+ANS(str_cmp($ml->ra_correct_ans));
+install_problem_grader(~~&std_problem_grader);
+$showPartialCorrectAnswers = 1;
+
+ENDDOCUMENT();        # This should be the last executable line in the problem.

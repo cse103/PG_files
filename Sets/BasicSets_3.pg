@@ -1,0 +1,63 @@
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "MathObjects.pl",
+  "parserRadioButtons.pl",
+  "compoundProblem.pl",
+  "Parser.pl",
+  "PGunion.pl",
+  "PGcourse.pl",
+  "PGchoicemacros.pl",
+);
+
+Context("Interval");
+TEXT(beginproblem);
+$showPartialCorrectAnswers = 1;
+
+$S=Set(3,5,7,9);
+@RE1=NchooseK(10,4);
+$R1=Set("{".join(",",@RE1)."}");
+
+@RE2=NchooseK(10,6);
+$R2=Set("{".join(",",@RE2)."}");
+
+$Omega=Set(Set(0,1,2,3,4,5,6,7,8,9)+Set(2,3));
+$U=Set($R1+$R2);
+$R1C=Set($Omega-$R1);
+$R2C=Set($Omega-$R2);
+
+######################################################################
+BEGIN_PGML
+
+#### Unions and Intersections ####
+Suppose [`A`] and [`B`] are two sets. The _intersection_ of the two sets, denoted [`A \cap B`] contains the elements that are in _both_ sets. 
+
+Thus, for example, [`` \{1,2,3,4,5,6\} \cap \{2,4,6,8,10\}=\{2,4,6\} ``]
+
+The _union_ of two sets, denoted [`A\cup B`], contains those elements that are _either_ in [`A`] or in [`B`] (or in both).
+
+For example [`` \{1,2,3,4,5,6\} \cup \{2,4,6,8,10\}=\{1,2,3,4,5,6,8,10\} ``]
+
+#### Spaces and Complements ####
+
+In probability we call the set of all possible outcomes (for a particular experiment) as the _outcome space_ and denote it by [`\Omega`]. Subsets of [`\Omega`] are called _events_. The _complement_ of an event [`A`] is the set of outcomes that are in [`\Omega`] but not in [`A`].
+
+For example, suppose [`\Omega=[$Omega]`] then the
+complement of the set [` A=\{1,9,0\}`] is [` A^c=\{2,3,4,5,6,7,8\}`].
+
+Keeping the same assumption on [`\Omega`]. Write the following sets (don't forget to put braces around the list of numbers):
+
+o [`[$R1] \cup [$R2] = `] [__________________]{$U}
+o [`[$R1]^c = `] [______________________]{$R1C}
+o [`[$R2]^c = `] [______________________]{$R2C}
+o [`[$R1] \cap [$R2] = `] [______________________]{$R1->intersect($R2)}
+o [`[$R1] \cap [$R2]^c = `] [______________________]{$R1->intersect($R2C)}
+o [`[$R1]^c \cap [$R2] = `] [______________________]{$R1C->intersect($R2)}
+o [`[$R1]^c \cap [$R2]^c = `] [______________________]{$R1C->intersect($R2C)}
+
+END_PGML
+######################################################################
+
+ENDDOCUMENT();
