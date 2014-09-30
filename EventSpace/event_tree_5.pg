@@ -1,0 +1,32 @@
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "MathObjects.pl",
+  "PGcourse.pl",
+  "contextIntegerFunctions.pl"
+);
+
+
+TEXT(beginproblem);
+$showPartialCorrectAnswers = 1;
+
+$k=random(1,4,1);
+######################################################################
+
+BEGIN_PGML
+
+You choose one out of [$k + 2] cards: [$k] are red on one side and black on the other, one is red/red, and one is black/black. You place the chosen card on the table
+  with a random side facing up. You will get a dollar if the opposite
+  side of the chosen card has the same color as the face-up side, and zero otherwise. What
+  is the fair value of a ticket to play this game?
+
+[____________]{Compute("2/($k + 2)")}
+
+END_PGML
+
+
+######################################################################
+
+ENDDOCUMENT();        # This should be the last executable line in the problem. 

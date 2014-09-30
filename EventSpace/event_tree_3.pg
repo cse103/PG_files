@@ -1,0 +1,34 @@
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "MathObjects.pl",
+  "PGcourse.pl",
+  "contextIntegerFunctions.pl"
+);
+
+
+TEXT(beginproblem);
+$showPartialCorrectAnswers = 1;
+
+$k=random(1,5,1);
+######################################################################
+
+BEGIN_PGML
+
+##Difference between dice rolls##
+
+
+You toss two identical 6-sided dies, you get a dollar if the
+*difference between the outcomes is [$k] *, zero otherwise. What is the
+fair value of a ticket to play this game?
+
+[____________]{Compute("2*(6-$k)*(1/6)^2")}
+
+END_PGML
+
+
+######################################################################
+
+ENDDOCUMENT();        # This should be the last executable line in the problem. 

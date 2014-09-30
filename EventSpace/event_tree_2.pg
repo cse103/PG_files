@@ -1,0 +1,29 @@
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "MathObjects.pl",
+  "PGcourse.pl",
+  "contextIntegerFunctions.pl"
+);
+
+
+TEXT(beginproblem);
+$showPartialCorrectAnswers = 1;
+
+$k=random(1,5,1);
+######################################################################
+
+BEGIN_PGML
+
+You toss two 6-sided fair dice; one is green and the other red. 
+You get a dollar if the red die outcome is larger than the green die outcome by [$k], and get zero dollars otherwise. What is the fair value of a ticket to play
+  this game?
+
+[____________]{Compute("(6 - $k)*((1/6)^2)")}
+
+END_PGML
+
+
+ENDDOCUMENT();        
