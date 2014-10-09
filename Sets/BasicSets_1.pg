@@ -16,7 +16,13 @@ Context("Interval");
 TEXT(beginproblem);
 $showPartialCorrectAnswers = 1;
 
-$S=Set(3,5,7,9);
+$min = random(3,6,1);
+$max = random(10,16,1);
+@rng = ($min..$max);
+$rs = Set(join(",",@rng));
+$S = Set(3,5,7,9,11,13,15);
+$A = $rs->intersect($S);
+$Ac = Set(1,2,3,4,5,6);
 
 ######################################################################
 BEGIN_PGML
@@ -49,9 +55,11 @@ are _unordered_ collections, in other words [`\{1,2,3,4,5,6\} =
 is either 0 or 1, *an element  cannot appear multiple times 
 in the set*. For that there is a different construct called *bags* which we shall not use in this course.
 
-Write the set of odd numbers that are larger than 2 and smaller than 10 ? (Separate the elements using Commas and surround the list with braces as in the examples above.)
+Write the set [`A`] given above as the possible outcomes of the roll of a six-sided die. (Separate the elements using commas and surround the list with curly braces as in the examples above.)
+[______]{$Ac}
 
-Answer = [______]{Set(3,5,7,9)}
+What is the set of odd numbers that are larger than [$min-1] and smaller than [$max+1]?
+Answer = [______]{$A}
 
 END_PGML
 ######################################################################

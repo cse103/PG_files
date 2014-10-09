@@ -47,8 +47,10 @@ if ($a == 6){
    };
 
 BEGIN_PGML
-Find the number of distinguishable permutations formed by using each of the letters [$lts] once and only once.  
+1. Find the number of distinguishable ways of arranging the letters "MAMA".  
+Your answer is : [_________________________]{Compute("(4*3*2)/(2*2)")}
 
+2. Find the number of distinguishable permutations formed by using each of the letters [$lts] once and only once.  
 Your answer is : [_________________________]{$ans}
 END_PGML
 

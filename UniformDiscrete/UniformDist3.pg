@@ -28,7 +28,8 @@ $Div6=Set("{6,12}");
 
 BEGIN_PGML
 ## Cards ##
-What is the probability a uniformly randomly chosen card from a standard deck of 52 cards is a king?  
+o How many kings are in a standard deck of 52 cards? [_________]{4}
+o What is the probability a uniformly randomly chosen card from a standard deck of 52 cards is a king?  
 [_________]{1/13}
 
 END_PGML

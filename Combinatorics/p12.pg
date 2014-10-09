@@ -34,13 +34,15 @@ $showPartialCorrectAnswers = 1;
 $n2 = random(3,6,1);
 
 BEGIN_PGML
-How many strings of [$n2] lower case English letters are there that
+1. Roll two fair dice: a red die and a green die. How many different ways are there of getting at least one six?
+Your answer is: [_______]{Compute("36 - (5*5)")}
+
+2. How many strings of [$n2] lower case English letters are there that
 have 
 the letter x in them somewhere? Here strings may use the same letter more
 than once.  
 (Hint: It might be easier to first count the strings that don't have an 
 x in them.)  
-  
 Your answer is: [_______]{Compute("26**$n2-25**$n2")}
 END_PGML
 

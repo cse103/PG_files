@@ -45,6 +45,9 @@ stars. The number of such choices is [`{7 \choose 3} = 35`]
 *PROBLEM:*
 Suppose balls come in [$R1] colors and that you are to pick out [$R2] balls. How many different color combinations are possible?
 
+By the analogy explained above, how many bars do u need[______]{($R1-1)}
+By the analogy explained above, how many stars do u need[______]{($R2)}
+
 o The number of color combinations is [______]{"(($R2+$R1-1)!)/(($R2)!*($R1-1)!)"}
 
 END_PGML
