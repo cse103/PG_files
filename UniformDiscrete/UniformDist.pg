@@ -16,7 +16,7 @@ Context("Numeric");
 $R1=random(10,20,1); # size of instance space
 $R2=random(5,$R1,1); # size of event set.
 
-TEXT(PGML::Format2(<<'END_PGML'));
+BEGIN_PGML
 
 ##Uniform Distributions over finite outcome spaces##
 
@@ -51,7 +51,7 @@ Suppose we have [$R1] cards, numbered 1,...,[$R1]. Suppose that when we pick a c
 
 o *Copy* the number of cards here: [_________]{$R1}
 o *Copy* the maximal card value in [`A`] here: [________]{$R2}
-o The probability of the event is equal to [__________________________]{"$R2/$R1"}
+o The probability of the event is equal to [__________________________]{Compute("$R2/$R1")}
 
 END_PGML
 BEGIN_PGML_SOLUTION
