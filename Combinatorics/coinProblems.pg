@@ -23,7 +23,6 @@ $showPartialCorrectAnswers = 1; # show student the correct part of their answer.
 
 
 $coins=random(9,11,1); # number of tosses of the dice
-$coins_1_heads=
 
 BEGIN_PGML
 
