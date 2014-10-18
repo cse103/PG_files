@@ -24,7 +24,7 @@ loadMacros(
     "PGstandard.pl",
     "PGML.pl",
     "MathObjects.pl",
-    "PGcourse.pl",  
+    "PGcourse.pl",
     "contextIntegerFunctions.pl"
 );
 
@@ -40,9 +40,9 @@ $d=Compute("($b-1)*P(26,$a)+1");
 $showHint = 3;
 
 BEGIN_PGML
-Consider a list of randomly generated [$a]-letter "words" printed on a paper. The letters cannot be repeated.  
-(a) What is the size of the set of allowed words?  
-Answer = [__________]{$n} 
+Consider a list of randomly generated [$a]-letter "words" printed on a paper. The letters cannot be repeated.
+(a) What is the size of the set of allowed words?
+Answer = [__________]{Compute("P(26,$a)")}
 
 After [$showHint] incorrect tries you will be able to see a hint.
 END_PGML
@@ -51,19 +51,19 @@ There are 26 letters in the english alphabet, therefor there are 26 possibilitie
 END_PGML_SOLUTION
 
 BEGIN_PGML
-(b) At least how many of these "words" should be printed to be sure of having 
-at least [$b] identical "words" on the list?  
-Answer = [_______________]{$d}
+(b) At least how many of these "words" should be printed to be sure of having
+at least [$b] identical "words" on the list?
+Answer = [_______________]{Compute("($b-1)*P(26,$a)+1")}
 
 After [$showHint] incorrect tries you will be able to see a hint.
 END_PGML
 BEGIN_PGML_HINT
-Recall the "Pigeon Hole" principle. If the number of different words is [`n`] then in order to ensure that at least one of the words appears at least [`k`] times you need to print [`(k-1)n+1`] words. Now, if you can set [`k`] and [`n`] to the correct values, you'll have the answer. 
+Recall the "Pigeon Hole" principle. If the number of different words is [`n`] then in order to ensure that at least one of the words appears at least [`k`] times you need to print [`(k-1)n+1`] words. Now, if you can set [`k`] and [`n`] to the correct values, you'll have the answer.
 END_PGML_SOLUTION
 
 BEGIN_PGML
-(c) At least how many identical "words" are printed if there are [`[$c]`] "words" on the list?  
-Answer = [_______________]{$b2}
+(c) At least how many identical "words" are printed if there are [`[$c]`] "words" on the list?
+Answer = [_______________]{Compute("$b+2")}
 
 After [$showHint] incorrect tries you will be able to see a hint.
 END_PGML
