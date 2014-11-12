@@ -40,9 +40,9 @@ Using Markov's inequality that he learned from CSE103,
 he says that the probabality of seeing at least this many 
 heads is at most [$p]. 
 
-o How many times did he toss the coin? 
-[`N`] = [____________]{$ans1}
-(If [`N`] is a fraction, please round it up to the next integer)
+o Give the best lower bound, using Markov inequality, on the number of times John tossed the coin? 
+[`N`] = [____________]{Compute("$p*$k/$r")}
+(Provide the exact answer, don't round it to the next larger integer number.)
 
 Suppose John lends you this coin. If you flip the coin [$n2] times, 
 what is the upper bound of the probability of seeing at least [$k2] heads 
