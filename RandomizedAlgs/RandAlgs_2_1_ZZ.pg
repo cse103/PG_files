@@ -1,0 +1,87 @@
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+"PG.pl",
+"PGML.pl",
+"MathObjects.pl",
+"PGbasicmacros.pl",
+"PGchoicemacros.pl",
+"PGanswermacros.pl",
+"PGgraphmacros.pl",
+"PGnumericalmacros.pl",
+"PGstatisticsmacros.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 1;
+
+package my::Function::numeric;
+our @ISA = ('Parser::Function::numeric');
+
+sub Q {
+   shift; my $x = shift;
+   return main::normal_prob($x, 'infty', mean=>0, deviation=>1);
+}
+
+sub Phi {
+   shift; my $x = shift;
+   return main::normal_prob('-infty', $x, mean=>0, deviation=>1);
+}
+
+sub erf {
+   shift; my $x = shift;
+   $phi = main::normal_prob('-infty', $x*sqrt(2), mean=>0, deviation=>1);
+   $a = 2*$phi-1;
+   return $a;
+}
+
+package main;
+
+Context("Numeric");
+Context()->functions->add(
+erf =>{class=>"my::Function::numeric", nocomplex=>1},
+Q =>{class=>"my::Function::numeric", nocomplex=>1}, 
+Phi =>{class=>"my::Function::numeric", nocomplex=>1}
+);
+
+Context()->flags->set(tolerance=>0.001);
+Context()->texStrings;
+Context()->variables->add(k => "Real");
+Context()->variables->add(T => "Real");
+
+
+BEGIN_PGML
+
+Let's say you have a Monte Carlo algorithm M that _always_ finishes in time [`O(T(n))`] and have up to a 8% probability of returning the wrong answer.  What you would prefer, however, is an algorithm A that runs in _expected time_ [`T(n)`] for problem size [`n`] but always find the _correct_ answer. We will construct an algorithm A from M that satisfies these properties.
+
+What is the probability of running Monte Carlo algorithm 2 times and don't get a correct answer? [__________]{Compute("0.08**2")}
+
+How about running Monte Carlo algorithm 5 times and don't get a correct answer?[_________]{Compute("0.08**5")}
+
+What is the probability of running Monte Carlo algorithm 5 times and get correct answer at least once?[________]{Compute("1-(0.08**5)")}
+
+You see that running 5 times Monte Carlo, we already have a small enough probability of return the wrong answer. And we have a very high probability of getting the right answer.
+
+---
+
+What about the expected time? Let's have Monte Carlo algorithm running in time [`T`] What is the expected time of running Monte Carlo algorithm [`k`] times? (write your answer in terms of k and T) [_________]{"k*T"}
+
+As [`k`] increase, the expected time is increased. Therefore, for algorithm A we are uncertain about how long it takes.
+
+---
+
+Thus an algorithm A is as follows:
+* Run M and check whether the return value is the correct value. If yes, return the value.
+* Else, run M again.  
+
+You may already notice that the algorithm A that we constructed is actually the Las Vegas algorithm which guarantee a correct answer.  
+
+---
+
+_Recap_:
+- For "Las Vegas" algorithms, uncertainty is in the algorithm _runtime_.  The algorithm is always correct.  
+- For "Monte Carlo" algorithms, uncertainty is in the algorithm _correctness_.  The algorithm completes in deterministic time [`T(n)`].  
+
+END_PGML
+
+ENDDOCUMENT();       # This should be the last executable line in the problem.
