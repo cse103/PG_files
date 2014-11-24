@@ -109,34 +109,34 @@ So the average query time is constant!
 
 What is the worst case query time; that is, what is the length of the longest linked list
 in [`T`]? Equivalently, when you throw [`n`] balls in [`n`] bins, what is the size of the 
-largest bin? We'll see that with very high probability, no bin gets [`\geq \log n`]
+largest bin? We'll see that with very high probability, no bin gets [``\geq \log n``]
 balls.
 
-For any bin [`i`], let [`E_i`] be the event that it gets [`\geq \log n`] balls.
+For any bin [`i`], let [`E_i`] be the event that it gets [``\geq \log n``] balls.
 
 [$BCENTER]*
-[`` \pr(E_i) \  \leq \ {n \choose \log n} \left( \frac{1}{n} \right)^{\log n} .``]
+[``` \pr(E_i) \  \leq \ {n \choose \log n} \left( \frac{1}{n} \right)^{\log n} .```]
 [$ECENTER]*
 
-(Do you see why? Because we want to select [`\log n`] balls to go into bin [`i`], but do not care where the other balls go.) 
+(Do you see why? Because we want to select [``\log n``] balls to go into bin [`i`], but do not care where the other balls go.) 
 
 To upper bound this probability we use the inequality (see cheat sheet) that
 
 [$BCENTER]*
-[``
+[```
 {n \choose k} \leq \left( \frac{ne}{k} \right)^k
-``]
+```]
 [$ECENTER]*
 
 Applying this inequality we get:
 
 [$BCENTER]*
-[``
+[```
 {n \choose \log n} \left( \frac{1}{n} \right)^{\log n} \leq 
 \left( \frac{ne}{n \log n}  \right)^{\log n} =
 \left( \frac{e}{\log n}  \right)^{\log n} =
 \frac{n^{\log e}}{(\log n)^{\log n}} \leq \frac{1}{n^2}
-``]
+```]
 [$ECENTER]*
 
 Where the last inequality can be shown by taking the log of both sides:
@@ -149,7 +149,7 @@ Where the last inequality can be shown by taking the log of both sides:
 [$ECENTER]* 
 
 or equivalently 
->>[``\log \log n \ge 2+\log e``]<<
+>>[```\log \log n \ge 2+\log e```]<<
 which holds when [`n>2000`].
 
 Having shown that [`\pr(E_i) \leq 1/n^2`], it follows that
@@ -166,9 +166,9 @@ Having shown that [`\pr(E_i) \leq 1/n^2`], it follows that
 [$ECENTER]*
 
 For instance, if you throw a million balls into a million bins, then the chance that
-there is a bin with [`\geq`][______]{20} (round to integer) balls is at most 1 in a million.
+there is a bin with [``\geq``][______]{20} (round to integer) balls is at most 1 in a million.
 
-Getting back to hashing, this means that for [`n`] elements, the worst case query time (with probability as high as [`1-1/n`]) is [`O`]([__________]{log(n)}). (answer in terms of [`n`], you can use "log" in the answer, but not "log2" although they are equivalent in big-O notation)
+Getting back to hashing, this means that for [`n`] elements, the worst case query time (with probability as high as [``1-1/n``]) is [`O`]([__________]{log(n)}). (answer in terms of [`n`], you can use "log" in the answer, but not "log2" although they are equivalent in big-O notation)
 
 ---
 

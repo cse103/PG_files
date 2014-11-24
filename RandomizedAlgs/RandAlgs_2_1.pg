@@ -55,7 +55,8 @@ Context()->variables->are(
 
 
 BEGIN_PGML
-*(Extra Credit)*  
+
+# Transforming Las Vegas to Monte Carlo
 
 Suppose you have an algorithm A for your problem that always returns the correct answer, but takes different amounts of time each time it runs.  Let [`X_n`] be the random variable giving the time algorithm A takes to complete for input of size [`n`].  Time can't be negative, so [`X \geq 0`].  
 We call A a _Las Vegas Algorithm_ if for any input size [`n`] there is a [`T(n)`] so that [`\mathbb{E}(X_n) = T(n)`].  

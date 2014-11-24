@@ -1,0 +1,49 @@
+##DESCRIPTION
+##  Karger's min cut algorithm
+##ENDDESCRIPTION
+
+
+########################################################################
+
+DOCUMENT();      
+
+loadMacros(
+  "PGstandard.pl",
+  "PGML.pl",
+  "MathObjects.pl",
+  "PGcourse.pl",
+  "PGauxiliaryFunctions.pl"
+);
+
+TEXT(beginproblem());
+
+$showPartialCorrectAnswers = 1;
+
+$n = random(10,20,1);
+$m = random(20,50,1);
+
+
+$n2 = random(20,50,1);
+$r = random(3,10,1);
+
+$n3 = random(10,20,1);
+$i = random(2,5,1);
+
+BEGIN_PGML
+
+Questions regarding Karger's min-cut algorithm.
+
+1. An undirected graph has [$n] nodes and [$m] edges. Give a tight upper bound on the size of the min-cut.  [____]{floor(2*$m/$n)}
+
+2. Suppose a graph has [$n2] edges and the order of a particular node,
+node [`a`], is [$r] . An edge is chosen uniformly at random. What is
+the probability that the chosen edge has [`a`] as one of its end points? [____]{Compute("$r/$n2")}
+
+3. We have shown that the probability of hitting the min-cut set in a
+single iteration is at most [`(2/n)`] where n=[$n3] is the number of nodes in the graph. What is the probability of not hitting the min-cut set in any
+of the first  [$i] iterations? [________]{Compute("($n3-$i)($n3-$i-1)/(($n3)($n3-1))")} What is the probability of not hitting the min-cut set in any of the last  [$i] iterations? [________]{Compute("2*1/(($i+2)($i+1))")}
+
+END_PGML
+
+
+ENDDOCUMENT();        

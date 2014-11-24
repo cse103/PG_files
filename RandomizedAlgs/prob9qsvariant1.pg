@@ -1,0 +1,102 @@
+## DESCRIPTION
+##   Apply the Central Limit Theorem
+## ENDDESCRIPTION
+
+## KEYWORDS('Probability', 'Central Limit Theorem')
+## Tagged by nhamblet
+
+## DBsubject('Probability')
+## DBchapter('Theory')
+## DBsection('The Central Limit Theorem')
+## Date('')
+## Author('')
+## Institution('Rochester')
+## TitleText1('')
+## EditionText1('')
+## AuthorText1('')
+## Section1('')
+## Problem1('')
+
+DOCUMENT();        # This should be the first executable line in the problem.
+
+loadMacros(
+"PG.pl",
+"PGML.pl",
+"MathObjects.pl",
+"PGbasicmacros.pl",
+"PGchoicemacros.pl",
+"PGanswermacros.pl",
+"PGgraphmacros.pl",
+"PGnumericalmacros.pl",
+"PGstatisticsmacros.pl"
+);
+
+TEXT(beginproblem());
+$showPartialCorrectAnswers = 0;
+
+
+
+package main;
+
+
+
+
+
+
+$k = random(3,7,2);
+
+$alpha = random(0.1,0.4,0.1);
+
+$exp = 2;
+
+if ($k == 5){
+  $exp = 3;
+} 
+
+if ($k == 7){
+   $exp = 4;
+} 
+
+
+
+BEGIN_PGML
+
+## Quickselect - Algorithm for computing percentiles ##
+
+In this problem, we will analyze the expected running time of a variant to the  Quickselect algorithm discussed in lecture. The Quickselect algorithm is used to select the [`k^{th}`] percentile element in an array containing [`n`] elements.
+
+In this version of quickselect we change the the way we select the pivot element. Suppose instead of a single pivot we pick [`[$k]`] numbers, sort them, and select the pivot to be the median of the numbers.
+
+
+We consider ourselves to be lucky, if our pivot falls in the range of [`[$alpha]*n`] and  [`(1-[$alpha])*n`].
+
+Pick one of the [`[$k]`] numbers that we have sampled. What is the probability that this number is not in the range of [`[$alpha]*n`] and [`(1-[$alpha])*n`] [_________]{Compute("2*$alpha")}
+
+[`\mbox{Hint :} \Pr( \mbox{A number is not in range}) = \Pr(\mbox{The number is below the required range}) + \Pr(\mbox{The number is beyond the required range}) `]
+
+What is the probability that the median of the [`[$k]`] numbers that we sample is not in the range of [`[$alpha]*n`] and [`(1-[$alpha])*n`] [_________]{Compute("2*($alpha)^($exp)")}
+
+[`\mbox{Hint :} \Pr( \mbox{Median of our sample is not in range}) = \Pr(\mbox{Median and the numbers smaller than the median are below the required range}) + \Pr(\mbox{Median and the numbers greater than the median are beyond the range}) `]
+
+What is the probability that the median of the [`[$k]`] numbers that we sample is  in the range of [`[$alpha]*n`] and [`(1-[$alpha])*n`] [_________]{Compute("1-2*($alpha)^($exp)")}
+
+Now, let us use the results computed above to build a recurrence relation to estimate the expected running time of the algorithm.
+
+Let [`T(n)`] denote the expected running time of the algorithm with input size n.
+
+When we get lucky, our problem reduces to a size of [`(1-[$alpha])*n`]. 
+When we are unlucky, our problem size remains [`n`].
+
+[`T(n) \leq n + a T((1-[$alpha])*n) + b T(n)`]
+
+In the recurrence relation, what is the value of [`a`] [_______]{Compute("1-2*($alpha)^($exp)")}
+In the recurrence relation, what is the value of [`b`] [_______]{Compute("2*($alpha)^($exp)")}
+
+Solving the recurrence relation we get [`T(n)  \leq C*n`]
+What is the value of [`C`] [_____]{Compute("1/((1-2*($alpha)^($exp))*$alpha)")}
+
+What is the expected number of random splits before we see a lucky split [_______]{Compute("1/(1-2*($alpha)^($exp))")}
+
+END_PGML
+
+ENDDOCUMENT();       # This should be the last executable line in the problem.
